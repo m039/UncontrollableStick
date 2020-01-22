@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Level1.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Stick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/BallCheckpointArea.tscn" type="PackedScene" id=4]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+Ball = ExtResource( 2 )
+
+[node name="Stick" parent="." instance=ExtResource( 3 )]
+angularVelocity = 3.0
+
+[node name="StartPosition" type="Node2D" parent="."]
+position = Vector2( 290, 810 )
+
+[node name="Checkpoints" type="Node2D" parent="."]
+
+[node name="BallCheckpointArea1" parent="Checkpoints" instance=ExtResource( 4 )]
+position = Vector2( 470, 800 )
+
+[node name="BallCheckpointArea2" parent="Checkpoints" instance=ExtResource( 4 )]
+position = Vector2( 110, 800 )

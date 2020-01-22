@@ -8,15 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "BaseLevel",
+"language": "GDScript",
+"path": "res://Levels/BaseLevel.gd"
+} ]
 _global_script_class_icons={
-
+"BaseLevel": ""
 }
 
 [application]
 
 config/name="Balancing Stick"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Levels/Level1.tscn"
 config/icon="res://icon.png"
 
 [display]
