@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Square_100x100.png-c149f73246fa7648ddb221525c9b7940.stex"
+path="res://.import/Square_100x100.png-8e55029883c8841af6df3bc4cb3af1b6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Square_100x100.png"
-dest_files=[ "res://.import/Square_100x100.png-c149f73246fa7648ddb221525c9b7940.stex" ]
+source_file="res://Assets/Art/Square_100x100.png"
+dest_files=[ "res://.import/Square_100x100.png-8e55029883c8841af6df3bc4cb3af1b6.stex" ]
 
 [params]
 

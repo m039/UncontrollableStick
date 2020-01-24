@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Ball",
+"language": "GDScript",
+"path": "res://Objects/Ball.gd"
+}, {
 "base": "Node",
 "class": "BaseLevel",
 "language": "GDScript",
 "path": "res://Levels/BaseLevel.gd"
 } ]
 _global_script_class_icons={
+"Ball": "",
 "BaseLevel": ""
 }
 

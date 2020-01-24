@@ -4,7 +4,13 @@ class_name BaseLevel
 
 export (PackedScene) var Ball
 
+func _ready():
+	print("Ready");
+
 func _on_ball_screen_exited():
+	_on_restart();
+
+func _on_restart():
 	pass
 
 func create_ball(pos):
