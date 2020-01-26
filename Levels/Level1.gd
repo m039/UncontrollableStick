@@ -66,7 +66,6 @@ func _physics_process(delta):
 		return
 
 	# Set the ball's activie state.
-
 	if ball.get_area().overlaps_area(stickNormalZone):
 		ballActive = false
 	else:

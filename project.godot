@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Balancing Stick"
+config/name="Uncontrollable Stick"
 run/main_scene="res://Screens/MenuScreen.tscn"
 config/icon="res://icon.png"
 
