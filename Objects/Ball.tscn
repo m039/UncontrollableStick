@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/Ball.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/Circle_100x100.png" type="Texture" id=2]
@@ -10,6 +10,9 @@ bounce = 0.4
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 68.1817
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 33.0524
 
 [node name="Ball" type="RigidBody2D"]
 position = Vector2( 290, 220 )
@@ -38,4 +41,9 @@ position = Vector2( 10, -10 )
 rotation = -2.87979
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Area"]
+shape = SubResource( 3 )
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

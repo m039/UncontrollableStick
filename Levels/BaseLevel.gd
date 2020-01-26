@@ -4,8 +4,7 @@ class_name BaseLevel
 
 export (PackedScene) var Ball
 
-func _ready():
-	print("Ready");
+export (PackedScene) var BigMessage
 
 func _on_ball_screen_exited():
 	_on_restart();

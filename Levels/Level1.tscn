@@ -16,7 +16,6 @@ angularVelocity = 3.0
 position = Vector2( 290, 810 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="BallCheckpointArea1" parent="Checkpoints" instance=ExtResource( 4 )]
 position = Vector2( 470, 800 )

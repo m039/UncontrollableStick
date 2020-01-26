@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Stick.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/StickBackground.png" type="Texture" id=2]
@@ -11,6 +11,9 @@ extents = Vector2( 235.099, 27.3426 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 51.3593, 28.0342 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 133.253, 29.3517 )
 
 [node name="Stick" type="RigidBody2D"]
 position = Vector2( 290, 860 )
@@ -27,18 +30,24 @@ texture = ExtResource( 2 )
 visible = false
 shape = SubResource( 2 )
 
-[node name="ActiveZones" type="Node2D" parent="."]
+[node name="Zones" type="Node2D" parent="."]
 
-[node name="ActiveZone1" type="Area2D" parent="ActiveZones"]
+[node name="ActiveZone1" type="Area2D" parent="Zones"]
 editor/display_folded = true
 position = Vector2( -184.689, 0.0690752 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveZones/ActiveZone1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/ActiveZone1"]
 shape = SubResource( 3 )
 
-[node name="ActiveZone2" type="Area2D" parent="ActiveZones"]
+[node name="ActiveZone2" type="Area2D" parent="Zones"]
 editor/display_folded = true
 position = Vector2( 184.986, 0.192 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveZones/ActiveZone2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/ActiveZone2"]
 shape = SubResource( 3 )
+
+[node name="NormalZone" type="Area2D" parent="Zones"]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/NormalZone"]
+shape = SubResource( 4 )

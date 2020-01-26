@@ -25,3 +25,12 @@ func set_state(state):
 			$SmallDot.modulate = smallDotNormalColor
 		State.ACTIVE:
 			$SmallDot.modulate = smallDotActiveColor
+
+func set_active(value : bool):
+	if value:
+		set_state(State.ACTIVE)
+	else:
+		set_state(State.NORMAL)
+
+func get_area():
+	return $Area
