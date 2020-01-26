@@ -47,7 +47,6 @@ position = Vector2( 184.986, 0.192 )
 shape = SubResource( 3 )
 
 [node name="NormalZone" type="Area2D" parent="Zones"]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zones/NormalZone"]
 shape = SubResource( 4 )

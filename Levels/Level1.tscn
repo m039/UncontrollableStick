@@ -13,7 +13,7 @@ Ball = ExtResource( 2 )
 angularVelocity = 3.0
 
 [node name="StartPosition" type="Node2D" parent="."]
-position = Vector2( 290, 810 )
+position = Vector2( 290, 803 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
 

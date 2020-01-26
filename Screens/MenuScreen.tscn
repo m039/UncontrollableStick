@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Screens/MenuScreen.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Art/StickBackground.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Art/Circle_100x100.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/Alegreya/Alegreya-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+extra_spacing_top = -18
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 5 )
+
+[node name="MenuScreen" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Stick" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 290, 860 )
+texture = ExtResource( 2 )
+
+[node name="Ball" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 290, 803 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 70.0
+margin_top = 130.0
+margin_right = 481.0
+margin_bottom = 403.0
+custom_fonts/font = SubResource( 1 )
+text = "Uncontrollable 
+Stick 
+Prototype"
+align = 1
+
+[node name="StartGameButton" type="Button" parent="."]
+margin_left = 90.0
+margin_top = 420.0
+margin_right = 480.0
+margin_bottom = 490.0
+custom_fonts/font = SubResource( 2 )
+text = "Start Game"
+
+[node name="SettingsButton" type="Button" parent="."]
+visible = false
+margin_left = 90.0
+margin_top = 510.0
+margin_right = 480.0
+margin_bottom = 590.0
+custom_fonts/font = SubResource( 2 )
+text = "Settings"
+
+[node name="AboutButton" type="Button" parent="."]
+visible = false
+margin_left = 90.0
+margin_top = 510.0
+margin_right = 480.0
+margin_bottom = 590.0
+custom_fonts/font = SubResource( 2 )
+text = "About"
+[connection signal="pressed" from="StartGameButton" to="." method="_on_StartGameButton_pressed"]
