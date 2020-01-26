@@ -6,12 +6,19 @@ export (PackedScene) var Ball
 
 const BigMessage : PackedScene = preload("res://Objects/BigMessage.tscn")
 
+const InfoMessage : PackedScene = preload("res://Objects/InfoMessage.tscn")
+
 const WinScreen : PackedScene = preload("res://Screens/WinScreen.tscn")
 
 func show_big_message():
 	var message = BigMessage.instance()
 	add_child(message)
 	return message
+
+func show_info_message():
+	var message = InfoMessage.instance()
+	add_child(message)
+	return message	
 
 func show_win_screen():
 	var screen = WinScreen.instance()

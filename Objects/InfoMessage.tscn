@@ -4,19 +4,17 @@
 font_path = "res://Assets/Fonts/Alegreya/Alegreya-Bold.ttf"
 
 [sub_resource type="DynamicFont" id=2]
-size = 64
+size = 44
 font_data = SubResource( 1 )
 
-[node name="BigMessage" type="Label"]
-margin_left = 230.0
-margin_top = 450.0
-margin_right = 343.0
-margin_bottom = 539.0
+[node name="Message" type="Label"]
+margin_left = 150.0
+margin_top = 610.0
+margin_right = 407.0
+margin_bottom = 799.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 2 )
-text = "Test
-1
-2"
+text = "Press Any Key"
 align = 1
 valign = 1

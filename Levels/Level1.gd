@@ -4,17 +4,21 @@ const BallClass = preload("res://Objects/Ball.gd")
 
 var ball
 var ballActive : bool
-var ballActiveCheckpoints : int = 0
+var ballActiveCheckpoints : int
 var checkpoints = []
 var stickActiveZones = []
 var stickNormalZone
-var initialized : bool = false
-var finished : bool = false
+var initialized : bool
+var finished : bool
 var bigMessage 
+var infoMessage 
 var winScreen
-var finishedTime : float
 
 func _ready():
+	initialized = false
+	finished = false
+	ballActiveCheckpoints = 0
+	
 	$Stick.set_visibility(false)
 	$Stick.set_input_enabled(false)
 
@@ -34,6 +38,7 @@ func _ready():
 
 	# Initialization
 
+	stickActiveZones = []
 	stickActiveZones.append(get_node("Stick/Zones/ActiveZone1"))
 	stickActiveZones.append(get_node("Stick/Zones/ActiveZone2"))
 	stickNormalZone = get_node("Stick/Zones/NormalZone")
@@ -43,6 +48,18 @@ func _ready():
 	start_game()
 
 	initialized = true
+
+func _input(event):
+	if event is InputEventKey:
+		if event.is_pressed() and finished and infoMessage != null:
+			infoMessage.queue_free()
+			infoMessage = null
+			winScreen.queue_free()
+			winScreen = null
+			$Stick.rotation = 0
+			_ready()
+		elif event.scancode == KEY_ESCAPE:
+			get_tree().change_scene("res://Screens/MenuScreen.tscn")
 
 func _physics_process(delta):
 	if !initialized:
@@ -100,8 +117,8 @@ func _on_ball_entered(ball, checkpoint):
 		ballActiveCheckpoints += 1
 
 	if checkpoints.size() == 1:
-		# Show win screen.
 
+		# Show win screen.
 		winScreen = show_win_screen()
 		winScreen.set_number_of_stars(ballActiveCheckpoints + 1);
 
@@ -110,6 +127,12 @@ func _on_ball_entered(ball, checkpoint):
 		$Stick.set_input_enabled(false)
 
 		finished = true;
+
+		yield(get_tree().create_timer(1), "timeout")
+
+		infoMessage = show_info_message()
+		infoMessage.text = "Press Any Key"
+
 	else:	
 		checkpoints.erase(checkpoint)
 		set_checkpoint_enabled(checkpoints[0], true)
