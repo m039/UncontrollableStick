@@ -6,6 +6,11 @@ export (PackedScene) var Ball
 
 export (PackedScene) var BigMessage
 
+func create_message(text):
+	var message = BigMessage.instance()
+	message.text = text
+	add_child(message)
+
 func _on_ball_screen_exited():
 	_on_restart();
 

@@ -4,7 +4,7 @@ const BallClass = preload("res://Objects/Ball.gd")
 
 var ball
 var ballActive : bool
-var ballAlwaysWasActive : bool
+var ballActiveCheckpoints : int = 0
 var checkpoints = []
 var stickActiveZones = []
 var stickNormalZone
@@ -35,7 +35,7 @@ func start_game():
 		delete_ball(ball)
 
 	ballActive = false
-	ballAlwaysWasActive = true
+	ballActiveCheckpoints = 0
 
 	ball = create_ball($StartPosition.position)
 	ball.set_active(ballActive)
@@ -55,13 +55,16 @@ func _on_checkpoint_entered(ball, checkpoint):
 func _on_ball_entered(ball, checkpoint):
 	set_checkpoint_enabled(checkpoint, false)
 
-	ballAlwaysWasActive = ballAlwaysWasActive && ballActive
+	if ballActive:
+		ballActiveCheckpoints += 1
 
 	if checkpoints.size() == 1:
-		if ballAlwaysWasActive:
-			print("Congratulations. You made it!")
+		if ballActiveCheckpoints == 2:
+			print("3 stars")
+		elif ballActiveCheckpoints == 1:
+			print("2 stars")
 		else:
-			print("You finished the level, but you can make it better")
+			print("1 stars")
 	else:	
 		checkpoints.erase(checkpoint)
 		set_checkpoint_enabled(checkpoints[0], true)
