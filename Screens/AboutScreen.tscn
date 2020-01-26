@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Screens/AboutScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Art/StickBackground.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Fonts/Alegreya/Alegreya-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Assets/Fonts/ButtonFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Assets/Fonts/Roboto/Roboto-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Art/twitter_128x128.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -19,6 +20,21 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=3]
 size = 48
 font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 128, 128 )
+modulate_color = Color( 0, 0.67451, 0.933333, 1 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 128, 128 )
+modulate_color = Color( 0, 0.67451, 0.933333, 1 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 128, 128 )
+modulate_color = Color( 0, 0.67451, 0.933333, 0.501961 )
 
 [node name="Screen" type="Node2D"]
 script = ExtResource( 1 )
@@ -73,4 +89,14 @@ custom_fonts/font = SubResource( 3 )
 text = "Dmitry Mozgin"
 align = 1
 valign = 1
+
+[node name="TwitterButton" type="Button" parent="."]
+margin_left = 260.0
+margin_top = 440.0
+margin_right = 308.0
+margin_bottom = 488.0
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="TwitterButton" to="." method="_on_TwitterButton_pressed"]
