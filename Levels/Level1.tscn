@@ -18,7 +18,9 @@ position = Vector2( 290, 803 )
 [node name="Checkpoints" type="Node2D" parent="."]
 
 [node name="BallCheckpointArea1" parent="Checkpoints" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 470, 800 )
 
 [node name="BallCheckpointArea2" parent="Checkpoints" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 110, 800 )

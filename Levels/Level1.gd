@@ -8,15 +8,48 @@ var ballActiveCheckpoints : int = 0
 var checkpoints = []
 var stickActiveZones = []
 var stickNormalZone
+var initialized : bool = false
+var finished : bool = false
+var bigMessage 
+var winScreen
+var finishedTime : float
 
 func _ready():
+	$Stick.set_visibility(false)
+	$Stick.set_input_enabled(false)
+
+	# Create welcome messages
+	
+	bigMessage = show_big_message()
+
+	bigMessage.text = "Ready"
+
+	yield(get_tree().create_timer(2), "timeout")
+
+	bigMessage.text = "Collect\nBlue\nSquares"
+
+	yield(get_tree().create_timer(2), "timeout")
+
+	bigMessage.queue_free()
+
+	# Initialization
+
 	stickActiveZones.append(get_node("Stick/Zones/ActiveZone1"))
 	stickActiveZones.append(get_node("Stick/Zones/ActiveZone2"))
 	stickNormalZone = get_node("Stick/Zones/NormalZone")
+
+	# Create a ball and start the game
 	
 	start_game()
 
+	initialized = true
+
 func _physics_process(delta):
+	if !initialized:
+		return
+
+	# Set the ball's activie state.
+
 	if ball.get_area().overlaps_area(stickNormalZone):
 		ballActive = false
 	else:
@@ -28,9 +61,12 @@ func _physics_process(delta):
 	ball.set_active(ballActive)
 
 func _on_restart():
-	start_game()
+	# If the player has collected all squares, don't restart the game
+	if !finished:
+		start_game()
 
 func start_game():
+	# Create or reset the ball.
 	if ball != null:
 		delete_ball(ball)
 
@@ -47,11 +83,16 @@ func start_game():
 		child.disconnect("body_entered", self, "_on_checkpoint_entered")
 		child.connect("body_entered", self, "_on_checkpoint_entered", [child])
 		checkpoints.append(child)
+	
+	# Reset stick.
+	$Stick.set_visibility(true)
+	$Stick.set_input_enabled(true)
 
 func _on_checkpoint_entered(ball, checkpoint):
 	if ball is BallClass:
 		_on_ball_entered(ball, checkpoint)
 
+# A callback function when the ball entered a square.
 func _on_ball_entered(ball, checkpoint):
 	set_checkpoint_enabled(checkpoint, false)
 
@@ -59,12 +100,16 @@ func _on_ball_entered(ball, checkpoint):
 		ballActiveCheckpoints += 1
 
 	if checkpoints.size() == 1:
-		if ballActiveCheckpoints == 2:
-			print("3 stars")
-		elif ballActiveCheckpoints == 1:
-			print("2 stars")
-		else:
-			print("1 stars")
+		# Show win screen.
+
+		winScreen = show_win_screen()
+		winScreen.set_number_of_stars(ballActiveCheckpoints + 1);
+
+		# Hide the stick
+		$Stick.set_visibility(false)
+		$Stick.set_input_enabled(false)
+
+		finished = true;
 	else:	
 		checkpoints.erase(checkpoint)
 		set_checkpoint_enabled(checkpoints[0], true)

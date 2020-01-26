@@ -8,11 +8,16 @@ size = 64
 font_data = SubResource( 1 )
 
 [node name="BigMessage" type="Label"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = 230.0
 margin_top = 450.0
-margin_right = -219.0
-margin_bottom = -461.0
+margin_right = 343.0
+margin_bottom = 539.0
+grow_horizontal = 2
+grow_vertical = 2
 custom_fonts/font = SubResource( 2 )
-text = "Test"
+text = "Test
+1
+2"
+align = 1
+valign = 1
+autowrap = true

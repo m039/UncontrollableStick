@@ -4,12 +4,19 @@ class_name BaseLevel
 
 export (PackedScene) var Ball
 
-export (PackedScene) var BigMessage
+const BigMessage : PackedScene = preload("res://Objects/BigMessage.tscn")
 
-func create_message(text):
+const WinScreen : PackedScene = preload("res://Screens/WinScreen.tscn")
+
+func show_big_message():
 	var message = BigMessage.instance()
-	message.text = text
 	add_child(message)
+	return message
+
+func show_win_screen():
+	var screen = WinScreen.instance()
+	add_child(screen)
+	return screen
 
 func _on_ball_screen_exited():
 	_on_restart();
