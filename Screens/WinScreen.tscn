@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Screens/WinScreen.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/Alegreya/Alegreya-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Assets/Art/Star_100x100.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Art/Star_100x100_selected.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -26,19 +27,48 @@ margin_right = 438.0
 margin_bottom = 515.0
 alignment = 1
 
-[node name="Star1" type="TextureRect" parent="Stars"]
+[node name="Star1" type="CenterContainer" parent="Stars"]
+editor/display_folded = true
+margin_right = 100.0
+margin_bottom = 105.0
+
+[node name="Selected" type="TextureRect" parent="Stars/Star1"]
 margin_right = 100.0
 margin_bottom = 105.0
 texture = ExtResource( 3 )
 
-[node name="Star2" type="TextureRect" parent="Stars"]
+[node name="Normal" type="TextureRect" parent="Stars/Star1"]
+margin_right = 100.0
+margin_bottom = 105.0
+texture = ExtResource( 4 )
+
+[node name="Star2" type="CenterContainer" parent="Stars"]
+editor/display_folded = true
 margin_left = 104.0
 margin_right = 204.0
 margin_bottom = 105.0
+
+[node name="Selected" type="TextureRect" parent="Stars/Star2"]
+margin_right = 100.0
+margin_bottom = 105.0
 texture = ExtResource( 3 )
 
-[node name="Star3" type="TextureRect" parent="Stars"]
+[node name="Normal" type="TextureRect" parent="Stars/Star2"]
+margin_right = 100.0
+margin_bottom = 105.0
+texture = ExtResource( 4 )
+
+[node name="Star3" type="CenterContainer" parent="Stars"]
 margin_left = 208.0
 margin_right = 308.0
 margin_bottom = 105.0
+
+[node name="Selected" type="TextureRect" parent="Stars/Star3"]
+margin_right = 100.0
+margin_bottom = 105.0
 texture = ExtResource( 3 )
+
+[node name="Normal" type="TextureRect" parent="Stars/Star3"]
+margin_right = 100.0
+margin_bottom = 105.0
+texture = ExtResource( 4 )
